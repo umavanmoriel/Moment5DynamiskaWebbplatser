@@ -1,0 +1,78 @@
+@import "https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap";
+@media (width >= 900px) {
+  footer {
+    background-color: #00001a;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    display: flex;
+  }
+
+  footer ul {
+    justify-content: center;
+    display: flex;
+  }
+
+  footer li {
+    text-align: center;
+    color: #fff;
+    font-family: Roboto, Arial;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 38px;
+  }
+}
+
+@media (width >= 500px) and (width <= 900px) {
+  footer {
+    background-color: #00001a;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    display: flex;
+  }
+
+  footer ul {
+    justify-content: center;
+    display: flex;
+  }
+
+  footer li {
+    text-align: center;
+    color: #fff;
+    font-family: Roboto, Arial;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 38px;
+  }
+}
+
+@media (width <= 500px) {
+  footer {
+    background-color: #00001a;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    display: flex;
+  }
+
+  footer ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  footer li {
+    text-align: center;
+    color: #fff;
+    font-family: Roboto, Arial;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 38px;
+  }
+}
+/*# sourceMappingURL=index.dd7d1775.css.map */
