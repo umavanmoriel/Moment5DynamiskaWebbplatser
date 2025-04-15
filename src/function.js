@@ -32,7 +32,8 @@ async function processData() {
     try {
         const result = await getCoursesInfo();
         console.log('Received data:', result);
-        let newArray = result.sort((a, b) => b.applicantsTotal - a.applicantsTotal).slice(0, 6);
+        const filterCourses = result.filter(item => item.type === "Kurs");
+        let newArray = filterCourses.sort((a, b) => b.applicantsTotal - a.applicantsTotal).slice(0, 6);
         createChart(newArray);
         console.log(newArray); 
     } catch (error) {
