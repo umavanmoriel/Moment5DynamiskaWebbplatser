@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Startsida</title>
+    <title>Karta</title>
     <link rel="stylesheet" href="/index.2e8c441c.css">
     <script src="/index.041c07f7.js" defer=""></script>
+    <script src="/map.02d58022.js" defer=""></script>
 </head>
 <body>
     <header>
         <nav class="header-nav">
             <ul class="header-list">
-                <li><a href="/index.html">Startsida</a></li>
+                <li><a href="/index.html">Copyright</a></li>
                 <li><a href="/index.html"><img class="moon-animation" src="/moon.6959b093.png" alt=""></a></li>
             </ul>
         </nav>
@@ -32,20 +33,11 @@
         </div>
     </header>
     <main>
-        <h1>Utforska Universum:</h1>
-        <h2>En Resa Genom Planeter och Galaxer</h2>
-        <picture>
-            <source srcset="/universum1.b180e76b.webp" type="image/webp">
-            <img src="/universum1.860835b2.png" alt="Bild på en universum">
-        </picture>
-        <p>Välkommen till vår webbsida som är dedikerad till att utforska det fantastiska och oändliga universum! Här hittar du en rik källa av information om allt från våra närmaste grannar i solsystemet till de avlägsna galaxerna som pryder natthimlen.</p>
-        <picture>
-            <source srcset="/universum2.888381f8.webp" type="image/webp">
-            <img src="/universum2.9e6c4508.png" alt="Bild på en universum">
-        </picture>
-        <h2>Varför Utforska Universum?</h2>
-        <p>Universum är en plats av oändlig skönhet och mysterier. Genom att förstå mer om det omkring oss kan vi inte bara få insikter om vår egen planet, utan även om vår plats i det större kosmiska sammanhanget.</p>
-        <p>Vi hoppas att du finner vår webbsida både informativ och inspirerande. Tillsammans kan vi utforska de stjärnor som lyser över oss och de galaxer som sträcker sig bortom vår förståelse. Välkommen att börja din resa genom universum med oss!</p>
+        <h1>Karta</h1>
+        <div class="controls">
+            <input id="search-input" type="text" placeholder="Search places..." style="width: 300px; padding: 5px">
+        </div>
+        <div id="map"></div>
     </main>
     <footer>
         <nav>
@@ -57,5 +49,28 @@
             </ul>
         </nav>
     </footer>
+    <script>((g)=>{
+    var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window;
+    b = b[c] || (b[c] = {});
+    var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = ()=>h || (h = new Promise(async (f, n)=>{
+            await (a = m.createElement("script"));
+            e.set("libraries", [
+                ...r
+            ] + "");
+            for(k in g)e.set(k.replace(/[A-Z]/g, (t)=>"_" + t[0].toLowerCase()), g[k]);
+            e.set("callback", c + ".maps." + q);
+            a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+            d[q] = f;
+            a.onerror = ()=>h = n(Error(p + " could not load."));
+            a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+            m.head.append(a);
+        }));
+    d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n)=>r.add(f) && u().then(()=>d[l](f, ...n));
+})({
+    key: "AIzaSyA4KDHjMvO7qZ02IIF6US5qoVhca_wSDA0",
+    v: "weekly"
+});
+
+</script>
 </body>
 </html>

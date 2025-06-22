@@ -142,14 +142,14 @@
       this[globalName] = mainExports;
     }
   }
-})({"3i5S3":[function(require,module,exports,__globalThis) {
+})({"2Bqs8":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 var HMR_USE_SSE = false;
-module.bundle.HMR_BUNDLE_ID = "be659097041c07f7";
+module.bundle.HMR_BUNDLE_ID = "c662b2d902d58022";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, HMR_USE_SSE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -595,39 +595,20 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     }
 }
 
-},{}],"n0lrN":[function(require,module,exports,__globalThis) {
-// Dropdown menu
-const menuEl = document.getElementById("menu");
-const dropdownEl = document.getElementById("dropdown-menu");
-menuEl.addEventListener('click', ()=>{
-    dropdownEl.classList.toggle('show');
-    menuEl.classList.toggle('larger');
-}) /*
-//Hämta kurser
-async function getMapInfo() {
-    try {
-        const response = await fetch('https://maps.googleapis.com/maps/api/js?key=AIzaSyAnt3iJcGvVBZsrMQ0hRT4T8eQu2sTrN48&callback=console.debug&libraries=maps,marker&v=beta');
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Fetch error:', error);
-        throw error;
-    }
-};
+},{}],"dx2Y6":[function(require,module,exports,__globalThis) {
+let map;
+async function initMap() {
+    const { Map } = await google.maps.importLibrary("maps");
+    map = new Map(document.getElementById("map"), {
+        center: {
+            lat: -34.397,
+            lng: 150.644
+        },
+        zoom: 8
+    });
+}
+initMap();
 
-// Användning av den asynkrona funktionen
-async function processData() {
-    try {
-        const result = await getMapInfo();
-        console.log('Received data:', result);
-        coursesInfoDisplay(result);
-        window.courses = result;
-    } catch (error) {
-        console.error('Error processing data:', error);
-    }
-}  
-*/ ;
+},{}]},["2Bqs8","dx2Y6"], "dx2Y6", "parcelRequire94c2")
 
-},{}]},["3i5S3","n0lrN"], "n0lrN", "parcelRequire94c2")
-
-//# sourceMappingURL=index.041c07f7.js.map
+//# sourceMappingURL=map.02d58022.js.map
