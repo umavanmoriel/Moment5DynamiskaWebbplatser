@@ -75,6 +75,11 @@
         }
     }
 
+    #map {
+        height: 320px;
+        width: 500px;
+    }
+
     footer {
         background-color: base.$darker-background-color;
         height: 200px;
@@ -125,6 +130,7 @@
     
     .dropdown-menu.show {
         background-color: base.$meny-color;
+        right: 0%;
         @extend .header-style-ipad;
     }
     
@@ -166,6 +172,11 @@
             height: 300px;
         }
     
+    }
+
+    #map {
+        height: 320px;
+        width: 500px;
     }
 
     footer {
@@ -263,7 +274,10 @@
     
     }
 
-
+    #map {
+        height: 300px;
+        width: 300px;
+    }
     
     footer {
         background-color:base.$darker-background-color;
