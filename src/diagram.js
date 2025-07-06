@@ -1,12 +1,23 @@
-// Initialisering när sidan laddas om
+/**
+* Initierar applikationen när sidan laddas
+*/
 window.onload = init;
 
-// Funktion för att initialisera applikationen och hämta information
+/**
+* Anropar funktionen processData vid initialisering
+* @returns {void}
+*/
 function init() {
     processData();
 }
 
-//Hämta kurser
+/**
+* Hämtar data för kurser från API
+* @async - asynkton funktion som använder await
+* @returns {Promise<Array>} returnerar vektor med kurser
+* @throws {Error} - visar error om felet uppstår
+*/
+
 async function getCoursesInfo() {
     try {
         const response = await fetch('https://studenter.miun.se/~mallar/dt211g/');
@@ -18,7 +29,12 @@ async function getCoursesInfo() {
     }
 };
 
-// Användning av den asynkrona funktionen
+/**
+* Bearbetar data som hämtades med getCoursesInfo()
+* @async - asynkton funktion som använder await
+* @returns {void}
+* @throws {Error} - visar error om felet uppstår
+*/
 async function processData() {
     try {
         const result = await getCoursesInfo();
@@ -27,7 +43,7 @@ async function processData() {
         let coursesArray = filterCourses.sort((a, b) => b.applicantsTotal - a.applicantsTotal).slice(0, 6);
 
         const filterProgram = result.filter(item => item.type === "Program");
-        let programArray = filterProgram.sort((a, b) => b.applicantsTotal - a.applicantsTotal).slice(0, 6);
+        let programArray = filterProgram.sort((a, b) => b.applicantsTotal - a.applicantsTotal).slice(0, 5);
 
         createChart(coursesArray);
         console.log(coursesArray); 
@@ -40,8 +56,13 @@ async function processData() {
     }
 }
 
+/**
+* Skapar stapeldiagram som visar data som hämtades från API
+* @param {Array} data - vektor med objekt med kursnamn osv
+* @returns {void}
+*/
+
 function createChart(data) {
-    // Se till att elementet med ID 'diagram' finns i DOM
     const ctx = document.getElementById('diagram').getContext('2d');
     
     new Chart(ctx, {
@@ -66,8 +87,13 @@ function createChart(data) {
     });
 }
 
+/**
+* Skapar cirkeldiagram som visar data som hämtades från API
+* @param {Array} data - vektor med objekt med programnamn osv
+* @returns {void}
+*/
+
 function createChartPie(data) {
-    // Se till att elementet med ID 'diagram' finns i DOM
     const ctx = document.getElementById('piediagram').getContext('2d');
     
     new Chart(ctx, {

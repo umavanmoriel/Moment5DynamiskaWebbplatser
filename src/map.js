@@ -1,7 +1,21 @@
+/** 
+ * Söker element från DOM med id "search-button"
+ * @type {HTMLButtonElement}
+*/
 const searchButton = document.getElementById("search-button");
+
+/** 
+ * Söker input från DOM med id "search-input"
+ * @type {HTMLInputElement}
+*/
 const searchInput = document.getElementById("search-input");
 
 let map;
+
+/** 
+ * Skapar och initialiserar google karta 
+ * @return {Promise<void>} - returnerar ingenting
+*/
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
@@ -14,6 +28,11 @@ async function initMap() {
 
 }
 
+/** 
+ * Söker plats med google karta när man skriver namnet i input fält 
+ * @return {Promise<void>} - uppdaterar kartat och visar plats med markör
+*/
+
 async function findPlaces() {
     const { Place } = await google.maps.importLibrary("places");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
@@ -23,14 +42,14 @@ async function findPlaces() {
         textQuery,
         fields: ['location'],
     };
-    
+
     const { places } = await Place.searchByText(request);
     
     if (places.length) {
         console.log(places);
         const { LatLngBounds } = await google.maps.importLibrary("core");
         const bounds = new LatLngBounds();
-        // Loop through and get all the results.
+        // Loopa
         places.forEach((place) => {
             const markerView = new AdvancedMarkerElement({
                 map,
@@ -47,6 +66,13 @@ async function findPlaces() {
     }
 }
 
+/** 
+ * Startar google karta när sidan uppdateras 
+*/
+
 initMap();
 
+/** 
+ * Anropar funktionen findPlaces när man klickar på knappen searchButton 
+*/
 searchButton.addEventListener('click', findPlaces);

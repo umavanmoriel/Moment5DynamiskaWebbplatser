@@ -596,14 +596,21 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"fAZL5":[function(require,module,exports,__globalThis) {
-// Initialisering när sidan laddas om
-window.onload = init;
-// Funktion för att initialisera applikationen och hämta information
-function init() {
+/**
+* Initierar applikationen när sidan laddas
+*/ window.onload = init;
+/**
+* Anropar funktionen processData vid initialisering
+* @returns {void}
+*/ function init() {
     processData();
 }
-//Hämta kurser
-async function getCoursesInfo() {
+/**
+* Hämtar data för kurser från API
+* @async - asynkton funktion som använder await
+* @returns {Promise<Array>} returnerar vektor med kurser
+* @throws {Error} - visar error om felet uppstår
+*/ async function getCoursesInfo() {
     try {
         const response = await fetch('https://studenter.miun.se/~mallar/dt211g/');
         const data = await response.json();
@@ -613,15 +620,19 @@ async function getCoursesInfo() {
         throw error;
     }
 }
-// Användning av den asynkrona funktionen
-async function processData() {
+/**
+* Bearbetar data som hämtades med getCoursesInfo()
+* @async - asynkton funktion som använder await
+* @returns {void}
+* @throws {Error} - visar error om felet uppstår
+*/ async function processData() {
     try {
         const result = await getCoursesInfo();
         console.log('Received data:', result);
         const filterCourses = result.filter((item)=>item.type === "Kurs");
         let coursesArray = filterCourses.sort((a, b)=>b.applicantsTotal - a.applicantsTotal).slice(0, 6);
         const filterProgram = result.filter((item)=>item.type === "Program");
-        let programArray = filterProgram.sort((a, b)=>b.applicantsTotal - a.applicantsTotal).slice(0, 6);
+        let programArray = filterProgram.sort((a, b)=>b.applicantsTotal - a.applicantsTotal).slice(0, 5);
         createChart(coursesArray);
         console.log(coursesArray);
         createChartPie(programArray);
@@ -630,8 +641,11 @@ async function processData() {
         console.error('Error processing data:', error);
     }
 }
-function createChart(data) {
-    // Se till att elementet med ID 'diagram' finns i DOM
+/**
+* Skapar stapeldiagram som visar data som hämtades från API
+* @param {Array} data - vektor med objekt med kursnamn osv
+* @returns {void}
+*/ function createChart(data) {
     const ctx = document.getElementById('diagram').getContext('2d');
     new Chart(ctx, {
         type: 'bar',
@@ -654,8 +668,11 @@ function createChart(data) {
         }
     });
 }
-function createChartPie(data) {
-    // Se till att elementet med ID 'diagram' finns i DOM
+/**
+* Skapar cirkeldiagram som visar data som hämtades från API
+* @param {Array} data - vektor med objekt med programnamn osv
+* @returns {void}
+*/ function createChartPie(data) {
     const ctx = document.getElementById('piediagram').getContext('2d');
     new Chart(ctx, {
         type: 'pie',
